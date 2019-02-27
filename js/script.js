@@ -1,17 +1,14 @@
 'use strict';  
-// Zapisujemy w zmiennej odwołania do diva, w którym będziemy wypisywać teksty. 
 var output = document.getElementById('celsius-output');
-// Tylko zawartość pierwszego cudzysłowu będzie się zmieniać - reszta jest odpowiedzialna za dodanie pustych linii oraz odwróconą kolejność pisania tekstów. 
-output.innerHTML = 'Click the button! Convert Celsius!' + '<br><br>' + output.innerHTML; 
-// Zapiszemy w zmiennej odwołanie do guzika na stronie.
 var celsiusButton = document.getElementById('celsius-button');
-// Zmienna na stopnie Celcjusza. 
 var celsiusDegrees;
-// Kod będzie wykonywany zawsze po kliknięciu guzika.
+var fahrenheitOutput = document.getElementById('fahrenheit-output');
+var fahrenheitButon = document.getElementById('fahrenheit-button');
+var fahrenheitDegrees;
+
+output.innerHTML = 'Click the button! Convert Celsius!' + '<br><br>' + output.innerHTML;
 celsiusButton.addEventListener('click', function(){
-	// Wszystko oprócz ostatniej linijki kodu wykona się po każdym kliknięciu guzika. 
-	celsiusDegrees = window.prompt('Enter the temperature in Celsius degrees.');
-	// Tekst w cudzysłowiu będzie wyświetlony nad polem na odpowiedź. Odpowiedź mamy w zmiennej, wystarczy wyświetlić ją na stronie. 
+	celsiusDegrees = window.prompt('Enter the temperature in Celsius degrees.'); 
 	if (celsiusDegrees != '') {
         if (celsiusDegrees < 0) {
             output.innerHTML = 'Water is frozen.';
@@ -29,10 +26,7 @@ celsiusButton.addEventListener('click', function(){
     }
 }); 
 
-var fahrenheitOutput = document.getElementById('fahrenheit-output');
 fahrenheitOutput.innerHTML = 'Click the button! Convert Fahrenheit!' + '<br><br>' + fahrenheitOutput.innerHTML;
-var fahrenheitButon = document.getElementById('fahrenheit-button');
-var fahrenheitDegrees;
 fahrenheitButon.addEventListener('click', function(){
     fahrenheitDegrees = window.prompt('Enter the temperature in Celsius degrees.');
     if (fahrenheitDegrees != '') {
