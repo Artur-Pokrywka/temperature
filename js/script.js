@@ -6,54 +6,46 @@ var fahrenheitOutput = document.getElementById('fahrenheit-output');
 var fahrenheitButon = document.getElementById('fahrenheit-button');
 var fahrenheitDegrees;
 
+
 output.innerHTML = 'Click the button! Convert Celsius!' + '<br><br>' + output.innerHTML;
 celsiusButton.addEventListener('click', function () {
     celsiusDegrees = window.prompt('Enter the temperature in Celsius degrees.');
-    function converter () {   
-    return (celsiusDegrees * 1.8 + 32) + ' Fahrenheit degrees';
+    var degrees = parseFloat(celsiusDegrees);
+    function celsiusTofahreheitConverter () {       
+    return (degrees * 1.8 + 32) + ' Fahrenheit degrees';
     };
-    if (celsiusDegrees != '') {
-            if (celsiusDegrees < 0) {
-                output.innerHTML = converter () + ' - water is frozen.';
-            } 
-            else if (celsiusDegrees > 100) {
-                output.innerHTML = converter () +  ' - water evaporates.';
-            }
-            else {
-                output.innerHTML = converter () +  ' - water is liquid.';
-            }
-        }
-        else {
-            output.innerHTML = 'Number is incorrect!'
-        }
-}); 
-
-
-fahrenheitOutput.innerHTML = 'Click the button! Convert Fahrenheit!' + '<br><br>' + fahrenheitOutput.innerHTML;
-fahrenheitButon.addEventListener('click', function(){
-    fahrenheitDegrees = window.prompt('Enter the temperature in Fahrenheit degrees.');
-    function coverter2 () {
-        return (fahrenheitDegrees - 32) / 1.8 + ' Celsius degrees';
-    };
-    if (fahrenheitDegrees != '') {
-        if (fahrenheitDegrees < 32) {
-            fahrenheitOutput.innerHTML =  coverter2 () + ' - water is frozen.';
-        } 
-        else if (fahrenheitDegrees > 212) {
-            fahrenheitOutput.innerHTML =  coverter2 () + ' - water evaporates.';
-        }
-        else {
-            fahrenheitOutput.innerHTML =  coverter2 () + ' - water is liquid.';
-        }
+    if (degrees == '' || degrees == NaN) {
+        output.innerHTML = 'Number is incorrect!';
+        return;    
+    }
+    if (degrees < 0) {
+    output.innerHTML = celsiusTofahreheitConverter () + ' - water is frozen.';
+    } 
+    else if (degrees >= 100) {
+        output.innerHTML = celsiusTofahreheitConverter () +  ' - water evaporates.';
     }
     else {
-        fahrenheitOutput.innerHTML = 'Number is incorrect!'
+        output.innerHTML = celsiusTofahreheitConverter () +  ' - water is liquid.';
+    }
+}); 
+
+function fahrenheitTocelsiusCoverter () {
+    return (fahrenheitDegrees - 32) / 1.8 + ' Celsius degrees';
+};
+fahrenheitOutput.innerHTML = 'Click the button! Convert Fahrenheit!' + '<br><br>' + fahrenheitOutput.innerHTML;
+fahrenheitButon.addEventListener('click', function() {
+    fahrenheitDegrees = window.prompt('Enter the temperature in Fahrenheit degrees.'); 
+    if (fahrenheitDegrees == '') {
+        fahrenheitOutput.innerHTML = 'Number is incorrect!';
+        return;
+    }    
+    if (fahrenheitDegrees < 32) {
+        fahrenheitOutput.innerHTML = fahrenheitTocelsiusCoverter () + ' - water is frozen.';
+    } 
+    else if (fahrenheitDegrees >= 212) {
+        fahrenheitOutput.innerHTML = fahrenheitTocelsiusCoverter () + ' - water evaporates.';
+    }
+    else {
+        fahrenheitOutput.innerHTML = fahrenheitTocelsiusCoverter () + ' - water is liquid.';
     }
 });
-
-
-                   // TYLE DZIAŁA
-// function converter () {   
-//     return (celsiusDegrees * 1.8 + 32);
-// }
-// output.innerHTML = converter () + " Fahrenheit degrees"; 
