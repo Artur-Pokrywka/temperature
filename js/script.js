@@ -12,12 +12,12 @@ celsiusButton.addEventListener('click', function () {
     celsiusDegrees = window.prompt('Enter the temperature in Celsius degrees.');
     var degrees = parseFloat(celsiusDegrees);
     function celsiusTofahreheitConverter () {       
-    return (degrees * 1.8 + 32) + ' Fahrenheit degrees';
+        return (degrees * 1.8 + 32) + ' Fahrenheit degrees';        
     };
-    if (degrees == '' || degrees == NaN) {
+    if (isNaN(degrees)) {
         output.innerHTML = 'Number is incorrect!';
-        return;    
-    }
+        return;
+    } 
     if (degrees < 0) {
     output.innerHTML = celsiusTofahreheitConverter () + ' - water is frozen.';
     } 
@@ -29,16 +29,18 @@ celsiusButton.addEventListener('click', function () {
     }
 }); 
 
-function fahrenheitTocelsiusCoverter () {
-    return (fahrenheitDegrees - 32) / 1.8 + ' Celsius degrees';
-};
+
 fahrenheitOutput.innerHTML = 'Click the button! Convert Fahrenheit!' + '<br><br>' + fahrenheitOutput.innerHTML;
 fahrenheitButon.addEventListener('click', function() {
-    fahrenheitDegrees = window.prompt('Enter the temperature in Fahrenheit degrees.'); 
-    if (fahrenheitDegrees == '') {
+    fahrenheitDegrees = window.prompt('Enter the temperature in Fahrenheit degrees.');
+    var degrees = parseFloat(fahrenheitDegrees);
+    function fahrenheitTocelsiusCoverter () {
+        return (fahrenheitDegrees - 32) / 1.8 + ' Celsius degrees';
+    }; 
+    if (isNaN(degrees)) {
         fahrenheitOutput.innerHTML = 'Number is incorrect!';
         return;
-    }    
+    } 
     if (fahrenheitDegrees < 32) {
         fahrenheitOutput.innerHTML = fahrenheitTocelsiusCoverter () + ' - water is frozen.';
     } 
